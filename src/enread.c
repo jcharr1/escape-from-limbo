@@ -71,7 +71,7 @@ boolean EnemiesReader(FILE * datFile)
         //		DecodeString(name, name);
         //		EncDecString(name, "penguin", name);
         //		EncDecString(name, "wakkawakka", name);
-        printf("Enemy's name is %s\n", name);
+        //printf("Enemy's name is %s\n", name);
         enSetName(&enemy, name);
         
         
@@ -131,7 +131,7 @@ boolean EnemiesReader(FILE * datFile)
                 //				printf("Enemy's x, y is %d,%d\n", x, y);
                 if(rmAddEnemy(&rooms[x][y], &enemy))
                 {
-                    printf("Added %s to room %d %d\n", name, x, y);
+                    //printf("Added %s to room %d %d\n", name, x, y);
                 }
                 else
                 {
