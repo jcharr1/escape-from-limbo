@@ -27,6 +27,7 @@
 		961D2A071BF772470057C092 /* items1.dat in CopyFiles */ = {isa = PBXBuildFile; fileRef = 961D29E31BF76D5F0057C092 /* items1.dat */; };
 		961D2A081BF7724C0057C092 /* rooms1.dat in CopyFiles */ = {isa = PBXBuildFile; fileRef = 961D29F81BF76DAA0057C092 /* rooms1.dat */; };
 		961D2A091BF7724F0057C092 /* switches3.dat in CopyFiles */ = {isa = PBXBuildFile; fileRef = 961D29FC1BF76DBE0057C092 /* switches3.dat */; };
+		96A4505F1BF7B93000648217 /* EFL_UserManual.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 961D29761BF76C3A0057C092 /* EFL_UserManual.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,6 +37,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				96A4505F1BF7B93000648217 /* EFL_UserManual.txt in CopyFiles */,
 				961D2A061BF772440057C092 /* enemies3.dat in CopyFiles */,
 				961D2A071BF772470057C092 /* items1.dat in CopyFiles */,
 				961D2A081BF7724C0057C092 /* rooms1.dat in CopyFiles */,
@@ -57,7 +59,6 @@
 		961D297C1BF76C3A0057C092 /* structs.doc */ = {isa = PBXFileReference; lastKnownFileType = file; path = structs.doc; sourceTree = "<group>"; };
 		961D297D1BF76C3A0057C092 /* structs.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = structs.txt; sourceTree = "<group>"; };
 		961D297E1BF76C3A0057C092 /* SWITCH DATA FILE FORMAT.doc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SWITCH DATA FILE FORMAT.doc"; sourceTree = "<group>"; };
-		961D29D11BF76CDE0057C092 /* RefMan.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = RefMan.txt; path = ../../docs/RefMan.txt; sourceTree = "<group>"; };
 		961D29D21BF76D030057C092 /* efl_end.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = efl_end.c; path = src/efl_end.c; sourceTree = SOURCE_ROOT; };
 		961D29D31BF76D030057C092 /* efl_init.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = efl_init.c; path = src/efl_init.c; sourceTree = SOURCE_ROOT; };
 		961D29D41BF76D030057C092 /* efl_main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = efl_main.c; path = src/efl_main.c; sourceTree = SOURCE_ROOT; };
@@ -92,6 +93,7 @@
 		961D29FF1BF76DBE0057C092 /* Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Types.h; path = src/Types.h; sourceTree = SOURCE_ROOT; };
 		961D2A001BF76DBE0057C092 /* utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = utils.c; path = src/utils.c; sourceTree = SOURCE_ROOT; };
 		961D2A011BF76DBE0057C092 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utils.h; path = src/utils.h; sourceTree = SOURCE_ROOT; };
+		96A4505E1BF7B8F500648217 /* RefMan.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RefMan.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,12 +168,12 @@
 		961D29741BF76C3A0057C092 /* docs */ = {
 			isa = PBXGroup;
 			children = (
-				961D29D11BF76CDE0057C092 /* RefMan.txt */,
 				961D29751BF76C3A0057C092 /* ADTSpecsGroup.doc */,
 				961D29761BF76C3A0057C092 /* EFL_UserManual.txt */,
 				961D29771BF76C3A0057C092 /* ending.doc */,
 				961D29781BF76C3A0057C092 /* ENEMY DATA FILE FORMAT.doc */,
 				961D29791BF76C3A0057C092 /* Group ADTs.doc */,
+				96A4505E1BF7B8F500648217 /* RefMan.txt */,
 				961D297A1BF76C3A0057C092 /* ROOM DATA FILE FORMAT.doc */,
 				961D297B1BF76C3A0057C092 /* story.doc */,
 				961D297C1BF76C3A0057C092 /* structs.doc */,

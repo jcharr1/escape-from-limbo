@@ -78,7 +78,7 @@ If you pick a command that requires and object/direction, you will be prompted.
 
        Example:   || Enter in direction >> <object/direction>
 
-*** NOTE: All commands and directions MUST be lowercase, objects require you to match the exact case of the object name. ***
+*** NOTE: Commands, directions, and item names are not case sensitive. ***
 
 
 --- Movement ---
@@ -90,7 +90,7 @@ The world of Limbo is two-deminsional, therefore you will move solely north, sou
 The world of Limbo contains the necessities of food and drinks. Some areas may have more than others. Food and drinks replenish your health for you to live another day.
 
 --- Enemy Encounter ---
-When you encounter an enemy, you cannot leave the room are perform most other tasks until you have disposed of it.
+When you encounter an enemy, you cannot leave the room or perform most other tasks until you have disposed of it.
 
 There are three forms of melee combat in which you can perform:
 
@@ -126,10 +126,10 @@ You can quit the game at any point of the game, but be warned: This version has 
 IV. COMMANDS
 ------------
 
-<look>
+<look> or <l>
 This command displays and describes the current room you are in and lists the obtainable items within it.
 
-<inv>
+<inv> or <i>
 This command displays all items in your inventory.
 
 <map>
@@ -167,11 +167,11 @@ This command will quit the game.
      (These commands will prompt the user for an object/direction)
 
 <move>
-This command will prompt you to move in four different directions
-   <north>
-   <south>
-   <east>
-   <west>
+This command will prompt you to move in four different directions. You can also simply enter a direction.
+   <north> or <n>
+   <south> or <s>
+   <east> or <e>
+   <west> or <w>
 
 <use> This command will prompt you to use an item in your inventory.
 
@@ -215,7 +215,4 @@ Developer: Vincent Nguyen
 
 VIII. CONTACTS
 --------------
-Jason Charrier: jcharr1@aol.com
-Vincent Nguyen: vnguy13@lsu.edu
-Michael Simpson: MSim3436@aol.com
-Kathy Traxler: trax@bit.csc.lsu.edu
+Jason Charrier: jcharr42@gmail.com

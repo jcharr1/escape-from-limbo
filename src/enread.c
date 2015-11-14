@@ -66,13 +66,14 @@ boolean EnemiesReader(FILE * datFile)
         char buffer[20] = {'\0'};
         
         ungetc(temp, datFile);
+        ClearStr(name, (int)strlen(name));
         ReadLine(name, MAX_NAME_LEN, datFile);
         //		DecodeString(name, name);
         //		EncDecString(name, "penguin", name);
         //		EncDecString(name, "wakkawakka", name);
-        //		printf("Enemy's name is %s\n", name);
+        printf("Enemy's name is %s\n", name);
         enSetName(&enemy, name);
-        ClearStr(name, (int)strlen(name));
+        
         
         fscanf(datFile, " %d", &health);
         //		ReadLine(buffer, 100, datFile);
@@ -95,13 +96,13 @@ boolean EnemiesReader(FILE * datFile)
         enSetStrength(&enemy, strength);
         enSetHitPer(&enemy, hitPer);
         
-        //		ClearStr(buffer, strlen(buffer));
-        //		ReadLine(buffer, 100, datFile);
+        //ClearStr(buffer, strlen(buffer));
+        //ReadLine(buffer, 100, datFile);
         //		DecodeString(buffer, buffer);
         //		EncDecString(buffer, "penguin", buffer);
         //		EncDecString(buffer, "wakkawakka", buffer);
-        //		numEnemies = atoi(buffer);
-        //		printf("There are %d of these enemies\n", numEnemies);
+        //numEnemies = atoi(buffer);
+        //printf("There are %d of these enemies\n", numEnemies);
         
         //		ClearStr(buffer, strlen(buffer));
         //		ReadLine(buffer, 100, datFile);
@@ -113,6 +114,8 @@ boolean EnemiesReader(FILE * datFile)
         //		printf("The type of enemy is %c\n", type);
         
         fscanf(datFile, " %d %c", &numEnemies, &type);
+        //printf("There are %d of these enemies of type %c\n", numEnemies, type);
+        
         //type = fgetc(datFile);
         for(i = 0; i < numEnemies; ++i)
         {
@@ -126,7 +129,14 @@ boolean EnemiesReader(FILE * datFile)
                 //				EncDecString(buffer, "wakkawakka", buffer);
                 //sscanf(buffer, " %d %d", &x, &y);
                 //				printf("Enemy's x, y is %d,%d\n", x, y);
-                rmAddEnemy(&rooms[x][y], &enemy);
+                if(rmAddEnemy(&rooms[x][y], &enemy))
+                {
+                    printf("Added %s to room %d %d\n", name, x, y);
+                }
+                else
+                {
+                    printf("Failed to add %s to room %d %d\n", name, x, y);
+                }
             }
             else if(type == 'r')
             {
@@ -157,18 +167,19 @@ boolean EnemiesReader(FILE * datFile)
             temp = fgetc(datFile);
             while(temp == ' ' || temp =='\t' || (temp == '\n'))
                 temp = fgetc(datFile);
-            //ungetc(temp, datFile);
+            if(isnumber(temp))
+                ungetc(temp, datFile);
         }
     }
     return(TRUE);
 }
 
 /*
-void DecodeString(char * InputString, char * OutputString)
-{
-    EncDecString(InputString, "penguin", OutputString);
-    EncDecString(InputString, "wakkawakka", OutputString);
-}
-*/
- 
+ void DecodeString(char * InputString, char * OutputString)
+ {
+ EncDecString(InputString, "penguin", OutputString);
+ EncDecString(InputString, "wakkawakka", OutputString);
+ }
+ */
+
 /*====END OF FILE enread.c====*/
