@@ -153,6 +153,13 @@ int efl_main ()
      
      */
     
+    if(strObject)
+        free(strObject);
+    if(strVerb)
+        free(strVerb);
+    if(tempString)
+        free(tempString);
+    
     return 0;
 }
 

@@ -91,6 +91,7 @@ boolean Player_MOVE(char * strObject){
     }
     if ( liveEnemies ){
         printf("You cannot leave with the beast in the room!");
+        free(keyname);
         return FALSE;
     }
     

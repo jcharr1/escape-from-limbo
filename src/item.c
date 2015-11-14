@@ -25,7 +25,10 @@ void itemGetName(itemType * item, char * name)
 
 void itemSetName(itemType * item, char * name)
 {
-    strcpy(item->fName, name);
+    if(name)
+    {
+        strcpy(item->fName, name);
+    }
 }
 
 void itemSetType(itemType * item, char type)
