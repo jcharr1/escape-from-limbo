@@ -1,0 +1,113 @@
+24 25
+Hallway to Somewhere
++
+You are in a long, non-descript hallway made out of blue granite.
+Tall pillars flank both sides. There are exits to the west & east.
++
+0 0 1 1
+0
+24 26
+Ice Chamber
++
+You shiver violently as you enter this room. Huge icicles 
+line the ceiling. You might best hurry through this room
+just in case one of them decides to break loose and fall...
+On the floor is a thin layer of snow. There are exits to the 
+west and south.
++
+0 1 0 1
+0
+23 26
+Deadman's Way - North
++
+You're standing on a long, wooden walkway that spans for as far
+you can see to the south. There are exits to the north and south
+and there is a door to the east.
++
+1 1 1 0
+0
+22 26
+Deadman's Way - South
++
+You're at the south side of a long wooden walkway. Blue mist
+rises from the pit below. There are exits to the north and south.
++
+1 1 0 0
+0
+21 26
+White Dragon Lair
++
+You are in a huge jagged openning. Treasures, both wonderous and
+horrible, litter the entire cave. You dare not touch them for its
+owner may be near. There is an exit to the north.
++
+1 0 0 0
+0
+23 27
+Dead end?
++
+You're in a small cave with one exit to the west. This place is
+about exciting as watching paint dry...
++
+0 0 0 1
+1
+20 27
+Dead end! Not!
++
+You are in a small cave that's identical to the cave to the north
+except that there is exit to the east.
++
+0 0 1 0
+0
+20 28
+Quiet...too quiet...
++
+Silence hangs over this room like a set of cheap drapes. This can't
+be good. There are exits to the west and north.
++
+1 0 0 1
+0
+21 28
+Deadman Walking...
++
+Smells of rotting meat in here. I'll spare you the rest of the details.
+Trust me. You DON'T want to know. There is an exit to the south.
++
+0 1 0 0 
+0
+22 29
+Gem Room
++
+You are in a maze of twisty little passageways, all alike..........
+just kidding!
+You have emerged into a room made completely of precious jewels and 
+metals. Don't get any ideas, though. You're only interested in one 
+gem.
++
+0 0 0 0
+0
+24 24
+Chamber of Fates
++
+You are standing in a room who's very existence seems to shift
+every so often. The only things that seem to remain constant
+are three small holes in the floor. You can barely make out
+the words on a sign propped up on the far wall: "Return the
+Sparkling Trinity to rise above all things". There are exits
+to the north, west, and east.
++
+1 0 1 1
+0
+0 0
+Security Center
++
+Wow! Considering where you are, you're taken completely aback 
+by this room. Scores of VHS tapes line the walls in towering 
+shelves. There's at least a few dozen monitors scattered about,
+showing every nook and cranny of Limbo (odd since you saw no 
+cameras on your journey). In the middle of the room is a VCR whose
+clock is blinking 12:00AM. There seems to be a tape sticking 
+halfway out of it...
++
+0 0 0 0
+0

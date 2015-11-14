@@ -1,0 +1,95 @@
+Jason Charrier 
+3/15/2001
+CSC 3102 Group project
+Group 7
+
+/*----I love enumerations! :-) ----*/
+Enum PlayerState { DEAD, ALIVE };
+Enum EnemyState { DEAD, ALIVE };
+Enum boolean { TRUE, FALSE };
+Enum CommandType { MOVE, GET, USE, etc... };
+Enum Direction { NORTH, SOUTH, EAST, WEST };
+Enum SwicthJob { UNLOCK, LOCK, OPEN, CLOSE, etc... };
+Enum SwitchState { OFF, ON };
+Enum ObjState { OFF, ON };
+
+/*----I think the player should be declared globally----*/
+Struct playerType
+{
+	int fHealth;		// required in specs
+	int fHunger;		// required in specs
+	int fThirst;		// required in specs
+	PlayerState fState;	// player dead or alive?
+ItemType fInv[MAX_INV];	// the inventory is going to be limited, so I    // think a static array would probably be best
+int fScore;	// better as a global or member?
+int fCurrLocation;     // index of current location in map
+}
+
+/*----in my opinion, I think the room should only be a container for the items and objects and the objects themselves should define what actions are valid to perform on them. Man, C++ would come in handy here :-) ----*/
+struct roomType
+{
+	char fName[];			// name of the rooms
+list of ItemType fItems;	// items in the room
+	boolean fLocked;		// is room locked?
+	boolean IsWall;		// is this room actually a wall?
+	boolean IsVisited;		// has the room been visited?
+	int NumExits;			// number of exits from room
+	boolean ValidExits[4];	// the valid exit directions; 
+					// ex) if ValidExits[1]=1, there is an exit to the south
+objectType objects[];	// the objects in the room; not items; things like //dwarves, snakes, switches, and other interactive //objects you can't pick up
+}
+
+/*----dwarves, snakes, etc.----*/
+struct enemyType
+{
+	char fName[];			// name of enemy
+	EnemyState fState;		// enemy dead or alive?
+	// other stuff I can't think of right now
+}
+
+struct switchType
+{
+	SwitchJob job;		// what this switch does
+	int Location;		// the location of the room it locks/unlocks
+	SwitchState fState;	// is switch on or off?
+	// etc...
+}
+
+/*----used to make objType more general. I REALLY wish we could use C++ here----*/
+union oType
+{
+	enemyType enemy;
+	switchType switch;
+	// etc...
+}
+
+struct objType
+{
+ 	oType object;		// the object itself
+	char Description[];	// what kind of object is this?
+	ObjState fState;	// state of the object
+	CommandType ValidAction[];	// the actions that can be performed on this 
+// object
+}
+
+roomType Map[Whatever][byWhatever];
+
+
+Basic game structure (at least how I learned it)
+--------------------------------------------------------
+
+1) GameInit();			// this loads and initializes everything
+
+2) while(GameMain() != done); // this is the main even loop. All processing and logic goes here
+
+3) GameSutdown();		// unload everything and clean up
+
+Game main in more detail
+-------------------------------
+
+1) Display room info, contents, etc...
+2) Get player input
+3) Perform game logic based on player input like moving and changing object, player, and room states
+
+
+I hope this will be useful. If you have any comments or questions about the basic design I've come up with, please ask/tell me. 

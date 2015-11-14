@@ -1,0 +1,8 @@
+#pragma once
+#include<stdio.h>
+
+typedef struct map
+{
+	char column[50];}map;
+void CreateMap(map row[]);void RoomVisited(map row[], int x, int y) ;void
+PrintMap(map row[]);  

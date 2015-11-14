@@ -1,0 +1,67 @@
+GROUP PROJECT SPECIFICATIONS
+
+You are to write an interactive text based adventure game.
+This game should allow movement from place to place.  It should
+allow the adventurer to obtain items found in each place.  The
+adventurer should be able to: 
+
+ move in all directions of the compass
+ pick up and drop items
+ inventory items (get a list of what is in the backpack)
+ check health
+ eat, drin, sleep
+ throw, jump, kick, hit
+ check game status (what is winning in your game?)
+ quit the game
+
+Your game should have adventures other then just moving and
+picking up objects.  In Colassal Cave/Adventure there were
+dwarves and pirates.  You had to throw the bird at the snake
+to get by etc.
+
+Deliverables:
+
+Tuesday, 3/20
+   Hwk 5 - Which game are you writing, from scratch or are you
+           using the database provided.
+    
+           What is the storyline of this game (yes, you must
+           answer this even if you chose Adventure)
+
+           How has your group divided up the creative details?
+
+     Hwk 5 is a group homework.  I expect one hard copy per group.
+
+Tuesday, 4/3
+  Adts for your group project.  How are you perceiving all the
+  different peices of the project.  Yes, the rooms are a graph
+  but what about movement and player and all the other things you
+  have to implement.  How are they conceived?  What needs ADTS
+  and what doesn't.
+
+
+
+Friday, 4/27
+  Your group journal (a record of all meetings - who participated
+  and what was accomplished).  Email counts as meetings and 
+  collected email (in easy to read format) counts as a journal.
+
+  Your personal journal:
+    Your thoughts on how things went in the group meetings.
+    How you participated, how others participated, etc.
+    These are turned in individually and are used to help adjust
+    your fellow member's grades.  
+
+During the last week of class we will have group meetings to
+demo your project due at the group meeting is the documentation
+for the application (game).  The user's manual, the reference
+manual, the submitted code from your group account, your part
+of the submitted code from your personal 3102 account and a
+print out of the code.
+
+All programming standards from this class MUST be followed, except
+I lift the prohibition of global variables.  If you can justify
+it logically for speed's sake you can use globals. 
+
+You may use any system I have access to.  The code should all be
+in C.

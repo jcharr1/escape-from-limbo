@@ -1,0 +1,448 @@
+#include <io.h>
+#include <conio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <dos.h>
+#include <fcntl.h>
+#include <memory.h>
+#include <malloc.h>
+#include <math.h>
+#include <string.h>
+#include <ctype.h>
+
+#include "player.h"
+#include "globals.h" // JKC: you need this to reference the player
+
+/* 
+   JKC:
+   Note: I spent a while writing a LOT of room functions for manipulating
+         them. PLEASE use them, so I didn't write them all for nothing! :)
+         Please read the info in the .c file carefully about what each
+         func does before you use it!
+   Note2: by the way, GetListItemByKey DOES NOT GET AN OBJECT THAT IS A
+          KEY! The key that's it's referring to is some IDing piece of
+          info abou it (in this case, the name)
+ */
+
+
+/* Operation: void Player_MOVE(string)
+   Input:  string
+   Output: return true or false if player able to move in direction
+   Processing: If is able to move in direction
+                  return true
+               else return false
+*/
+boolean Player_MOVE(char * strObject){
+
+   directionType dir = NORTH;
+
+// JKC: check to see if any enemies alive in room. If there are
+// don't let the player leave
+// while(i < ROOM_MAX_ENEMIES && !liveEnemies)
+//    if(rmEnemyIsAlive[i]){
+//       liveEnemies = TRUE;
+//    ++i
+// if(liveEnemies)
+//    return(FALSE);	
+
+
+   if ( strcmp(strObject,"north") == 0 ){
+      ++player.fx;
+      if ( player.fx > UNI_MAX_X || // JKC:changed from 2; that was used
+                                    // only in my test map
+           !rmIsValidExit(&rooms[player.fx-1][player.fy], NORTH) ){
+         --player.fx;
+         printf("You cannot go North!\n");
+         return FALSE;
+      }
+      else{
+         dir = NORTH;
+         return TRUE;
+      }
+   }
+   else
+   if ( strcmp(strObject,"south") == 0 ){
+      --player.fx;
+      if( player.fx < 0 ||
+          !rmIsValidExit(&rooms[player.fx+1][player.fy], SOUTH) ){
+         ++player.fx;
+         return FALSE;
+         printf("You cannot go South!\n");
+      }
+      else{
+         dir = SOUTH;
+         return TRUE;
+      }
+   }
+   else
+   if ( strcmp(strObject,"east") == 0 ){
+      ++player.fy;
+      if( player.fy > UNI_MAX_Y || // JKC: changed from 1
+         !rmIsValidExit(&rooms[player.fx][player.fy-1], EAST) ){
+         --player.fy;
+         printf("You cannot go East!\n");
+         return FALSE;
+      }
+      else{
+         dir = EAST;
+         return TRUE;
+      }
+   }
+   else
+   if ( strcmp(strObject,"west") == 0 ){
+      --player.fy;
+      if( player.fy < 0 ||
+          !rmIsValidExit(&rooms[player.fx][player.fy+1], WEST) ){
+         ++player.fy;
+         printf("You cannot go West!\n");
+         return FALSE;
+      }
+      else{
+         dir = WEST;
+         return TRUE;
+      }
+   }
+   else{
+      return FALSE;
+   }
+
+}
+
+
+
+/* Operation: void Player_ALIVE()
+   Input:  global player health
+   Output: return true or false if player is alive
+   Processing: If player have more than 0 health
+                  return true for alive
+               else return false for dead
+*/
+boolean Player_ALIVE(){
+
+   if ( player.fHealth > 0 ){
+      return TRUE;
+   }
+   else
+      return FALSE;
+}
+
+
+
+/* Operation: void Player_USE(string)
+   Input:  string
+   Output: updated item data for global player
+   Processing: 
+*/
+void Player_USE(char * strObject){
+
+   itemType item;
+
+   char answer;
+
+   
+   // itemGetName( &item, strObject ); // JKC: ???
+   /* <JKC> */
+   itemSetName(&item, strObject);
+   if(!GetListItemByKey(player.list, &item);
+   {
+      printf("%s is not in your inventory!\n");
+   } 
+
+   else
+   /* </JKC> */
+    if ( itemGetType( &item ) == ITEM_FOOD )
+      Player_EAT(strObject);
+   else
+   if ( itemGetType( &item ) == ITEM_KEY )
+      Player_UNLOCK();
+   else
+   if ( itemGetType( &item ) == ITEM_GEM ){
+   }
+   else
+   if ( itemGetType( &item ) == ITEM_TAPE ){
+
+   }
+   /*
+   else{
+      if ( rooms[player.fx][player.fy].fHasSwitch ){
+         printf("Do you want to use the switch? (y or n) >>");
+         answer = getc(stdin);
+         while( answer == ' ' || answer == '\n' || answer == '\t' ){
+            answer = getc(stdin);
+            answer = tolower(answer);
+            if ( answer == 'y' ){
+               swSetState( &rooms[player.fx][player.fy].fSwitch, SW_ON);
+               swDoJob(  &rooms[player.fx][player.fy].fSwitch );
+               printf("Room has been unlocked!\n");
+            }
+         }
+      }
+    */
+// JKC: you don't need the above section! Since there's only 1 switch per
+// room so you can have a single word command "switch" or whatever
+// then use rmSetSwitchState(&rooms[player.fx][player.fy], SW_ON)
+// and then rmSwitchDoJob(&rooms[player.fx][player.fx]) if there are
+// no live enemies in the room  
+   }
+}
+
+
+
+/* Operation: void Player_UNLOCK(string)
+   Input:  string
+   Output: updated item data for global player
+   Processing: check if room is unlocked
+                  and delete key if it is in the inventory
+                  and open room door
+                  and display message
+               else display error message
+*/
+void Player_UNLOCK(/*void*/ char * keyName){
+
+   itemType item;
+   boolean found = FALSE;
+
+  /* <JKC> */
+  itemSetName(&item, keyName);
+  if(!GetListItemByKey(player.list, item))
+     printf("%s is not in your inventory!\n", keyName);
+  else if(itemGetType(&item) != ITEM_KEY)
+     printf("%s is not a key!\n");
+  else
+  /* </JKC> */
+
+  // if ( rooms[player.fx][player.fy].fIsLocked ){
+  // JKC: ADT violation! Use rmIsLocked(&rooms[player.fx][player.fy]
+     if(rmIsLocked(&rooms[player.fx][player.fy])
+  // JKC: already checked above if have key; just need to delete it;
+  // also the key must be in the player's inventory for them to use it 
+  //    if ( DeleteListItemByKey(rooms[player.fx][player.fy].fItems,&item) ){
+     DeleteListItemByKey(player.list);  // JKC   
+  // ADT violation! Use rmUnlock!
+  // unlock room by passing it as false
+  //       rooms[player.fx][player.fy].fIsLocked = FALSE;
+         rmUnlock(&(rooms[player.fx][player.fy)); // JKC
+         printf("\nYou have unlocked the door!");
+  //    }
+  //    else printf("\nYou don't have a key in your inventory!");
+   }
+   else printf("\nRoom is already unlocked!");
+
+}
+
+
+
+/* Operation: void Player_LOOK(string)
+   Input:  string
+   Output: display the contents of the room
+   Processing: display items in room
+*/
+void Player_LOOK(char * strObject){
+
+   boolean found = FALSE;
+   
+   /* <JKC> */
+   char title[ROOM_MAX_TITLE_LEN] = {'\0'};
+        descrip[MAX_DESCRIP_LEN] = {'\0'};
+
+// ADT violations!
+//   puts(&rooms[player.fx][player.fy].fTitle[ROOM_MAX_TITLE_LEN]);
+//   puts(&rooms[player.fx][player.fy].fDescrip[MAX_DESCRIP_LEN]);
+   rmGetTitle(&rooms[player.fx][player.fy], title);
+   rmGetDescrip(&rooms[player.fx][player.fy, descrip);
+   printf("%s\n%s\n", title, descrip);
+
+   puts("\nYou take a look at the room and notice the following:");
+   // ADT violations!
+   // JKC: This would mean that this room is locked. Doors should be 
+   // mentioned in the description
+   //if ( rooms[player.fx][player.fy].fIsLocked )
+   //   printf("\nA locked door");
+   //if ( rooms[player.fx][player.fy].fHasSwitch )
+   if(rmHasSwitch(&rooms[player.fx][player.fy]))
+      printf("\nA switch");
+
+   // JKC: don't need this; just use rmPrintItems
+   //while ( rooms[player.fx][player.fy].fItems ){
+   //
+   //}
+   rmPrintItems(&rooms[player.fx][player.fy]);
+
+
+// JKC: don't worry about the enemies; if they're there
+// they'll make their presence known
+/*
+   if ( rooms[player.fx][player.fy].fNumEnemies == 1 )
+      printf("\nYou see multiple enemies!");
+   else
+      if ( rooms[player.fx][player.fy].fNumEnemies > 1 )
+         printf("\nYou see multiple enemies!");
+*/
+}
+
+
+
+/* Operation: void Player_EAT(string)
+   Input:  string
+   Output: updated item data for global player
+   Processing: if item is a valid food
+                  then delete item by key
+                     and display message for full health and minus inventory
+               else display error message
+*/
+void Player_EAT(char * strObject){
+
+   itemType item;
+   boolean found = FALSE;
+
+   /* <JKC> */
+   itemSetName(&item, strObject);
+   if(!GetListItemByKey(player.list, &item))
+       printf("%s is not in your inventory!\n", strObject);
+   else 
+   /* </JKC> */
+
+   if ( itemGetType( &item ) == ITEM_FOOD ){
+      // delete item from inventory
+      if ( DeleteListItemByKey( player.list, &item ) ){
+         found = TRUE;
+      }
+
+      if ( found ){
+         // restore player's health to maximum
+         player.fHealth = PLAYER_MAX_HEALTH;
+         printf("\nYou have regained full health from the food!");
+         printf("\nThat's one less thing in your inventory!");
+      }
+      else
+         printf("\nYou don't have that food in your inventory");
+   }
+   else{
+      printf("\nYou can't eat that!");
+   }
+
+}
+
+
+
+/* Operation: void Player_DROP(string)
+   Input:  string
+   Output: updated item data for global player and room
+   Processing: delete item from inventory if found
+                  and place item in the room
+                  and display transaction messages
+               else display error message
+*/
+void Player_DROP(char * strObject){
+
+   itemType item;
+
+   /* <JKC> */
+   itemSetName(&item, strObject);
+   if(!GetListItemByKey(player.list, &item))
+       printf("%s is not in your inventory!\n", strObject);
+   else
+   /* </JKC> */ 
+
+   
+   // delete item from inventory
+   if ( DeleteListItemByKey( player.list, &item ) ){
+      // add item into room
+      // ADT violation!
+      // AddListItem( rooms[player.fx][player.fy].fItems, &item );
+      rmAddItem(&rooms[player.fx][player.fy], &item);
+      printf("\nYou just dropped that item in the room!");
+   }
+   else
+      printf("\nYou don't have that item in your inventory");
+}
+
+
+
+/* Operation: void Player_GET(string)
+   Input:  string
+   Output: updated item data for global player and room
+   Processing: add item if list is not full
+                  and place delete item from room
+                  and display transaction messages
+               else display error message
+*/
+void Player_GET(char * strObject){
+
+   itemType item;
+  
+   //itemGetName( &item, strObject ); // JKC: ???
+   //itemGetType( &item );            // JKC: ???
+
+   itemSetName(&item, strObject); // JKC
+   // JKC: make sure item is in the room first!!!
+   if(!rmGetItem(&rooms[player.fx][player.fy], &item))
+      printf("I see no %s here! Have you ever considered glasses?\n",
+              strObject);
+   else
+   /* </JKC> */
+
+   // add item from inventory
+   if ( AddListItem(player.list,&item) ){
+      // delete item from room
+     // JKC: don't need this cause rmGetItem automatically removes it from 
+     // the room  
+     //DeleteListItemByKey( rooms[player.fx][player.fy].fItems, &item );
+      printf("\nYou have taken the item from the room and put it in your inventory!");
+   }
+}
+
+
+
+/* Operation: Command_Call(string)
+   Input:  string
+   Output: true or false if the command was found
+   Processing: if command is found from list of verbs
+                  then call the corresponding functions
+*/
+boolean Command_Call(char *strVerb, char *strObject){
+
+   if ( strcmp(strVerb,"move") == 0 ){
+      Player_MOVE(strObject);
+      return TRUE;
+   }
+   else
+   if ( strcmp(strVerb,"use") == 0 ){
+      Player_USE(strObject);
+      return TRUE;
+   }
+   else
+   if ( strcmp(strVerb,"unlock") == 0 ){
+      Player_UNLOCK(strObject); // JKC: specify name of key
+      return TRUE;
+   }
+   else
+   if ( strcmp(strVerb,"look") == 0 ){
+      Player_LOOK();
+      return TRUE;
+   }
+   else
+   if ( strcmp(strVerb,"eat") == 0 ){
+      Player_EAT(strObject);
+      return TRUE;
+   }
+   else
+   if ( strcmp(strVerb,"drop") == 0 ){
+      Player_DROP(strObject);
+      return TRUE;
+   }
+   else
+   if ( strcmp(strVerb,"get") == 0 ){
+      Player_GET(strObject);
+      return TRUE;
+   }
+   else
+   if ( strcmp(strVerb,"quit") == 0 ){
+      return FALSE;
+   }
+   else{
+      printf("\nYou must start a sentence with an action Player!");
+      return FALSE;
+   }
+
+}

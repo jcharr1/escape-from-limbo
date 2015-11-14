@@ -1,0 +1,19 @@
+Reference Manual
+Starting the Game:
+To begin the game, log into the cs310307 root directory.  Type "make" at
+the classes prompt and hit enter.  Then type "efl" and hit enter again.
+
+Crash Response:
+If the game enters an infinite loop(the screen fills with the same
+statement printed indefinitely or just seems to completely lock up) press
+control z, control c, and/or control x in a crazy manner until you are
+returned the classes prompt.  If at any time the game prints Segmentation
+Fault, prints Bus Error, prints any other strange message that appears to
+be Greek and not related to the normal game playing(it's actually probably
+speaking Geek, that is, it's speaking to the programmer) or returns you to
+the classes prompt for no reason do not be alarmed.  This kind of thing
+happens all the time.  Contact the programmers as soon as possible and
+describe to them exactly what you did and what happened.  They can surely
+fix it.  In the mean time, restart your game in the usual manner and try
+not to break it this time.
+
