@@ -167,7 +167,7 @@ boolean EnemiesReader(FILE * datFile)
             temp = fgetc(datFile);
             while(temp == ' ' || temp =='\t' || (temp == '\n'))
                 temp = fgetc(datFile);
-            if(isnumber(temp))
+            if(isdigit(temp))
                 ungetc(temp, datFile);
         }
     }

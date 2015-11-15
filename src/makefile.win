@@ -1,5 +1,5 @@
 efl: message efl_main.o efl_init.o item.o room.o list.o enread.o roomread.o player.o parse.o switch.o map.o enemy.o swread.o utils.o main.o efl_end.o EncDec.o
-	gcc efl_main.o efl_init.o item.o room.o list.o enread.o roomread.o player.o parse.o EncDec.o switch.o map.o enemy.o swread.o utils.o main.o efl_end.o -o efl
+	gcc efl_main.o efl_init.o item.o room.o list.o enread.o roomread.o player.o parse.o EncDec.o switch.o map.o enemy.o swread.o utils.o main.o efl_end.o -o efl.exe
 utils.o: utils.c utils.h
 	gcc -c utils.c
 item.o: item.c types.h utils.h room.h item.h

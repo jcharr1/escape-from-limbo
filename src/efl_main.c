@@ -86,6 +86,8 @@ int efl_main ()
         if ( !Player_ALIVE() )
         {
             printf(BOLDRED "\nPlayer dead: GAME OVER, MAN!\n" RESET);
+            printf("Press enter to exit");
+            getc(stdin);
             done = TRUE;
         }
         
