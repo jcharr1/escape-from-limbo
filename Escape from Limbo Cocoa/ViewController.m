@@ -7,12 +7,6 @@
 //
 
 #import "ViewController.h"
-#include "Player.h"
-#include "room.h"
-
-
-playerType player;
-roomType theMap[];
 
 @implementation ViewController
 

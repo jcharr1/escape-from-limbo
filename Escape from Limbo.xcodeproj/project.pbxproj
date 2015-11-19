@@ -48,6 +48,11 @@
 		9662C3E41BFD626200DFF57A /* efl_init.c in Sources */ = {isa = PBXBuildFile; fileRef = 961D29D31BF76D030057C092 /* efl_init.c */; };
 		9662C3E51BFD626200DFF57A /* efl_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 961D29D41BF76D030057C092 /* efl_main.c */; };
 		96A4505F1BF7B93000648217 /* EFL_UserManual.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 961D29761BF76C3A0057C092 /* EFL_UserManual.txt */; };
+		96E25DB71BFD676D0026785A /* enemies3.dat in Resources */ = {isa = PBXBuildFile; fileRef = 961D29D81BF76D260057C092 /* enemies3.dat */; };
+		96E25DB81BFD676D0026785A /* items1.dat in Resources */ = {isa = PBXBuildFile; fileRef = 961D29E31BF76D5F0057C092 /* items1.dat */; };
+		96E25DB91BFD676D0026785A /* rooms1.dat in Resources */ = {isa = PBXBuildFile; fileRef = 961D29F81BF76DAA0057C092 /* rooms1.dat */; };
+		96E25DBA1BFD676D0026785A /* switches3.dat in Resources */ = {isa = PBXBuildFile; fileRef = 961D29FC1BF76DBE0057C092 /* switches3.dat */; };
+		96E25DBB1BFD67730026785A /* EFL_UserManual.txt in Resources */ = {isa = PBXBuildFile; fileRef = 961D29761BF76C3A0057C092 /* EFL_UserManual.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -322,6 +327,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96E25DBB1BFD67730026785A /* EFL_UserManual.txt in Resources */,
+				96E25DB71BFD676D0026785A /* enemies3.dat in Resources */,
+				96E25DB81BFD676D0026785A /* items1.dat in Resources */,
+				96E25DB91BFD676D0026785A /* rooms1.dat in Resources */,
+				96E25DBA1BFD676D0026785A /* switches3.dat in Resources */,
 				9662C3CA1BFD5E4700DFF57A /* Assets.xcassets in Resources */,
 				9662C3CD1BFD5E4700DFF57A /* Main.storyboard in Resources */,
 			);
@@ -539,6 +549,7 @@
 				9662C3D01BFD5E4700DFF57A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

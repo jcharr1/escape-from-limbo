@@ -22,6 +22,9 @@
 #include "enread.h"
 #include "swread.h"
 
+playerType player;
+roomType rooms[UNI_MAX_X][UNI_MAX_Y];
+
 boolean efl_init()
 {
     

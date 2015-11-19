@@ -13,9 +13,6 @@ int efl_init(void);
 int efl_main(void);
 void efl_end(void);
 
-playerType player;
-roomType rooms[UNI_MAX_X][UNI_MAX_Y];
-
 int main(void)
 {
     if(!efl_init())
