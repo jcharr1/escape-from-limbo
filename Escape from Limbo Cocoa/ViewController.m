@@ -22,4 +22,10 @@
     // Update the view, if already loaded.
 }
 
+- (IBAction)navButtonPushed:(NSButtonCell *)sender {
+
+    [self.textDisplay insertText:sender.title];
+
+}
+
 @end

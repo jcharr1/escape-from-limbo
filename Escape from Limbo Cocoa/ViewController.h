@@ -9,6 +9,11 @@
 #import <Cocoa/Cocoa.h>
 
 @interface ViewController : NSViewController
+@property (weak) IBOutlet NSButton *navButtonNorth;
+@property (weak) IBOutlet NSButton *navButtonWest;
+@property (weak) IBOutlet NSButton *navButtonEast;
+@property (weak) IBOutlet NSButton *navButtonSouth;
+@property (unsafe_unretained) IBOutlet NSTextView *textDisplay;
 
 
 @end
