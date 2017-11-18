@@ -71,7 +71,7 @@ int efl_main ()
         if(!done && Player_ALIVE())
         {
             rmGetTitle(&rooms[player.fx][player.fy], title);
-            printf("\nYou are in \"%s\"\n\n", title);
+            printf(WHITE "\nYou are in \"%s\"\n\n" RESET, title);
             if(!rmIsVisited(&rooms[player.fx][player.fy]))
             {
                 rmGetDescrip(&rooms[player.fx][player.fy], descrip);
@@ -85,7 +85,7 @@ int efl_main ()
         
         if ( !Player_ALIVE() )
         {
-            printf(BOLDRED "\nPlayer dead: GAME OVER, MAN!\n" RESET);
+            printf(BOLDRED "\nYou died: GAME OVER, MAN!\n" RESET);
             printf("Press enter to exit");
             getc(stdin);
             done = TRUE;

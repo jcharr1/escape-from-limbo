@@ -74,6 +74,7 @@ boolean rmProcessEnemies(roomPtrType room);
 boolean rmAttackEnemyAtIndex(roomPtrType room, int index, boolean withWeapon);
 boolean rmEnemyIsAlive(roomPtrType room, int index);
 boolean rmItemIsInRoom(roomPtrType room, char * name);
+boolean rmEnemiesAllDead(roomPtrType room);
 
 /*=======END OF FILE room.h========*/
 

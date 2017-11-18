@@ -467,13 +467,13 @@ void Player_INV(){
             GetListItemByIndex( player.list, i, &item);
             itemGetName(&item, Name);
             if ( NumItems == 2 && i == 0 )
-                printf("%s ", Name);
+                printf(YELLOW "%s " RESET, Name);
             else if(i < NumItems - 1)
-                printf("%s, ", Name);
+                printf(YELLOW "%s, " RESET, Name);
             else if(NumItems == 1)
-                printf("%s.\n", Name);
+                printf(YELLOW "%s.\n" RESET, Name);
             else
-                printf("and %s.\n", Name);
+                printf("and " YELLOW "%s.\n" RESET, Name);
             
         }
     }

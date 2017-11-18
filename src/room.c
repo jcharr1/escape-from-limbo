@@ -771,13 +771,13 @@ void rmPrintItems(roomPtrType room)
             GetListItemByIndex(room->fItems, i, &item);
             itemGetName(&item, Name);
             if((NumItems == 2) && (i == 0))
-                printf("%s ", Name);
+                printf(YELLOW "%s " RESET, Name);
             else if(i < NumItems - 1)
-                printf("%s, ", Name);
+                printf(YELLOW "%s, " RESET, Name);
             else if(NumItems == 1)
-                printf("%s.\n", Name);
+                printf(YELLOW "%s.\n" RESET, Name);
             else
-                printf("and %s.\n", Name);
+                printf("and " YELLOW "%s.\n" RESET, Name);
             
         }
     }
@@ -877,6 +877,11 @@ boolean rmProcessEnemies(roomPtrType room)
         return(FALSE);
     }
     
+    if(!rmEnemiesAllDead(room))
+    {
+        printf(BOLDRED "!!!!!!!!!!ENEMIES ENCOUNTERED!!!!!!!!!!\n" RESET);
+    }
+    
     for(i = 0; i < room->fNumEnemies; i++)
     {
         if(enGetState(&(room->fEnemies[i])) == ENEMY_STATE_ALIVE)
@@ -888,6 +893,17 @@ boolean rmProcessEnemies(roomPtrType room)
     return(TRUE);
 }
 
+boolean rmEnemiesAllDead(roomPtrType room)
+{
+    for(int i = 0; i < room->fNumEnemies; i++)
+    {
+        if(enGetState(&(room->fEnemies[i])) == ENEMY_STATE_ALIVE)
+        {
+            return(FALSE);
+        }
+    }
+    return(TRUE);
+}
 
 /*================================================*/
 /* Operation: rmAttackEnemyAtIndex(room, index)   */
