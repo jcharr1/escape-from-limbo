@@ -893,6 +893,22 @@ boolean rmProcessEnemies(roomPtrType room)
     return(TRUE);
 }
 
+/*===================================*/
+/* Operation: rmEnemiesAllDead(room) */
+/*=====================================================*/
+/* Purpose: this operation checks if all the enemies in*/
+/*          the given room are dead                    */
+/*=====================================================*/
+/* Conditions:                                         */
+/*   PRE: room to process enemies for                  */
+/*   POST: enemies are processed or displays error message*/
+/*   Processes: if room isn't valid, display error message*/
+/*            else                                     */
+/*               FOR all enemies in the room           */
+/*                  return false if any 1 is alive     */
+/*               else return true                      */
+/*=====================================================*/
+
 boolean rmEnemiesAllDead(roomPtrType room)
 {
     for(int i = 0; i < room->fNumEnemies; i++)

@@ -372,12 +372,14 @@ boolean enDoDamage(enemyPtrType enemy, int damage)
     {
         enemy->fHealth -= damage;
         printf(RED "The %s suffers %d damage!\n" RESET, enemy->fName, damage);
+        sleep(1);
     }
     
     if(enemy->fHealth <= 0)
     {
         enemy->fState = ENEMY_STATE_DEAD;
         printf("You have defeated the %s!\n\n", enemy->fName);
+        sleep(1);
     }
     
     return(TRUE);

@@ -16,22 +16,22 @@ typedef struct playerType
 
 boolean Player_CREATE(playerPtrType player);
 boolean Player_DESTROY(playerPtrType player);
-boolean Player_ALIVE();
+boolean Player_ALIVE(void);
 boolean Player_MOVE( char * strObject );
 void Player_USE(char * strObject);
 void Player_UNLOCK(char * keyname);
-boolean Player_SWITCH();
-void Player_LOOK();
-void Player_INV();
+boolean Player_SWITCH(void);
+void Player_LOOK(void);
+void Player_INV(void);
 void Player_EAT(char * strObject);
 void Player_DRINK(char * strObject);
 void Player_THROW(char * strObject);
 void Player_DROP(char * strObject);
 void Player_GET(char * strObject);
-boolean Player_HIT();
-boolean Player_KICK();
-void Player_HEALTH();
-boolean Player_QUIT();
+boolean Player_HIT(void);
+boolean Player_KICK(void);
+void Player_HEALTH(void);
+boolean Player_QUIT(void);
 
 boolean Command_Call(char *strVerb, char *strObject, map row[]);
 
