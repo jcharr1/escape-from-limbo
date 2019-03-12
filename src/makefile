@@ -43,3 +43,4 @@ lean: efl
 	rm *.o
 message:
 	@echo Building project, efl...
+
