@@ -1,4 +1,4 @@
 language: c
 script: 
-	-cd src
-	-make lean
+	cd src
+	make lean
