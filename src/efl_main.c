@@ -22,6 +22,7 @@
 #include "roomread.h"
 #include "enread.h"
 #include "swread.h"
+#include <unistd.h>
 
 void DoEnding(void);
 
@@ -72,10 +73,12 @@ int efl_main ()
         {
             rmGetTitle(&rooms[player.fx][player.fy], title);
             printf(WHITE "\nYou are in \"%s\"\n\n" RESET, title);
+            sleep(1);
             if(!rmIsVisited(&rooms[player.fx][player.fy]))
             {
                 rmGetDescrip(&rooms[player.fx][player.fy], descrip);
                 printf("%s", descrip);
+                sleep(1);
                 rmVisit(&rooms[player.fx][player.fy]);
                 RoomVisited(theMap, player.fx, player.fy);
                 
