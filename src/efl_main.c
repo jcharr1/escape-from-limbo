@@ -171,7 +171,7 @@ int efl_main ()
 void DoEnding(void)
 {
     printf("\n\"Ha, ha!\" you shout as you snatch the tape from the VCR. \"I can finally get out of this place!\"\n\n");
-    printf("A bony finger taps you on the shoulder. You whip around and come face to top of hood with Bob. His reaches his hand out to you expectantly.\n");
+    printf("A bony finger taps you on the shoulder. You whip around and come face to top of hood with Bob. He reaches his hand out to you expectantly.\n");
     printf("\n");
     printf("\"Come on, boy!\" he snarls. \"Hand it over!\" You hand over the tape, but the \ninstant it touches Bob's hand, he and the tape vanish into thin air!\n");
     printf("\n");
